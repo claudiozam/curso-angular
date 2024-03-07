@@ -1,0 +1,27 @@
+<h3>Listado de productos</h3>
+
+@if(productoActual.id > 0) {
+    <p>Producto actual</p>
+    <p>Id:{{productoActual.id}}</p>
+    <p>Nombre:{{productoActual.nombre}}</p>
+    <p>Precio:{{productoActual.precio}}</p>
+}
+
+<hr>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th></th>
+    </tr>
+
+    @for(p of productos; track p.id) {
+        <tr>
+            <td>{{p.id}}</td>
+            <td>{{p.nombre}}</td>
+            <td>{{p.precio}}</td>
+            <td><button type="button" (click)="eventoClickVer(p)">Ver</button></td>
+        </tr>
+    }
+</table>
