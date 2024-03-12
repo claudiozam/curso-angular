@@ -1,0 +1,23 @@
+<h3>Formulario de producto</h3>
+
+<form [formGroup]="formProductoGroup" (ngSubmit)="onSubmit(formProductoGroup)">
+    <div>
+      <label>
+        Nombre:
+        <input type="text" formControlName="nombre" placeholder="Nombre del producto">
+      </label>
+      @if(formProductoGroup!.get('nombre')!.invalid && (formProductoGroup!.get('nombre')!.dirty || formProductoGroup!.get('nombre')!.touched)) {
+        Falta el nombre
+      }
+    </div>
+    <div>
+      <label>
+        Precio:
+        <input type="number" formControlName="precio" placeholder="Precio del producto">
+      </label>
+      @if(formProductoGroup!.get('precio')!.invalid && (formProductoGroup!.get('precio')!.dirty || formProductoGroup!.get('precio')!.touched)) {
+        Falta el precio
+      }
+    </div>
+    <button type="submit">Enviar</button>
+  </form>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-listado-productos',
@@ -11,11 +12,7 @@ export class ListadoProductosComponent {
 
   @Output() updateProducto = new EventEmitter<any>(); 
 
-  productoActual = {
-    id: 0,
-    nombre: '',
-    precio: 0
-  };
+  productoActual : any = null;
 
   productos = [{
     id: 1,
