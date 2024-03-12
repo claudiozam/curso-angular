@@ -34,7 +34,12 @@ export class FormProductoComponent implements OnInit {
         nombre: form.value.nombre, 
         precio: form.value.precio }
       ;  
+
       this.eventoGuardarProducto.emit(producto);
+      this.formProductoGroup.patchValue({
+        nombre: '',
+        precio: '0'
+      });
     }
   }
 
