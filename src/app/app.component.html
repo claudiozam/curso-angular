@@ -13,6 +13,8 @@
     <div class="left-side">
       <h1>Proyecto integradir</h1>
       <app-listado-productos (updateProducto)="recuperarProducto($event)"></app-listado-productos>
+      <app-form-producto (eventoGuardarProducto)="recibirProducto($event)"></app-form-producto>
+
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">

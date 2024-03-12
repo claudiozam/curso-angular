@@ -5,7 +5,7 @@ import { FormProductoComponent } from '../form-producto/form-producto.component'
 @Component({
   selector: 'app-listado-productos',
   standalone: true,
-  imports: [FormProductoComponent],
+  imports: [],
   templateUrl: './listado-productos.component.html',
   styleUrl: './listado-productos.component.css'
 })
