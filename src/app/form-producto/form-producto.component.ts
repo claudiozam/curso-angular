@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,7 @@ import { FormBuilder, FormControl, Validators, FormGroup, ReactiveFormsModule } 
 })
 export class FormProductoComponent implements OnInit {
 
+  @Output() eventoGuardarProducto = new EventEmitter<any>();
   formProductoGroup!: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -20,20 +21,21 @@ export class FormProductoComponent implements OnInit {
   ngOnInit() {
 
     this.formProductoGroup = this.fb.group({
-      nombre: ['Test', [Validators.required, Validators.minLength(5)]],
+      nombre: ['', [Validators.required, Validators.minLength(5)]],
       precio: ['0', [Validators.required]]
     });
 
   }
 
   onSubmit(form: FormGroup) {
-    console.log('Valid?', form.valid); // true / false
-    console.log('Nombre', form.value.nombre);
-    console.log('Precio', form.value.precio);
-
-    //this.formProductoGroup.patchValue({
-    //  nombre: 'Cambio el valor,..,.'
-    //});
+    if(form.valid) {
+      let producto = { 
+        id: new Date().getTime(),
+        nombre: form.value.nombre, 
+        precio: form.value.precio }
+      ;  
+      this.eventoGuardarProducto.emit(producto);
+    }
   }
 
 

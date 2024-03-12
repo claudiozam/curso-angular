@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormProductoComponent } from '../form-producto/form-producto.component';
 
 @Component({
   selector: 'app-listado-productos',
   standalone: true,
-  imports: [],
+  imports: [FormProductoComponent],
   templateUrl: './listado-productos.component.html',
   styleUrl: './listado-productos.component.css'
 })
@@ -29,6 +30,10 @@ export class ListadoProductosComponent {
     console.log(p.id + ' ' + p.nombre);
     this.productoActual = p;
     this.updateProducto.emit(p);
+  }
+
+  recibirProducto(producto : any) {
+    this.productos.push(producto);
   }
 
 }
