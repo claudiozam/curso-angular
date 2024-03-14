@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ProductosService } from '../productos.service';
 
 @Component({
   selector: 'app-form-producto',
@@ -13,7 +14,7 @@ export class FormProductoComponent implements OnInit {
   @Output() eventoGuardarProducto = new EventEmitter<any>();
   formProductoGroup!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private productosService : ProductosService) {
     
   }
 
@@ -32,8 +33,10 @@ export class FormProductoComponent implements OnInit {
       let producto = { 
         id: new Date().getTime(),
         nombre: form.value.nombre, 
-        precio: form.value.precio }
-      ;  
+        precio: form.value.precio 
+      };  
+
+      this.productosService.guardarProducto(producto);
 
       this.eventoGuardarProducto.emit(producto);
       this.formProductoGroup.patchValue({
