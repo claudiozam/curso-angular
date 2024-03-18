@@ -3,11 +3,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormProductoComponent } from '../form-producto/form-producto.component';
 import { ProductosService } from '../productos.service';
 import { cloneDeep, sortBy } from 'lodash';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-listado-productos',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './listado-productos.component.html',
   styleUrl: './listado-productos.component.css'
 })

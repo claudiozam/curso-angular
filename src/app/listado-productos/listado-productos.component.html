@@ -21,7 +21,10 @@
             <td>{{p.id}}</td>
             <td>{{p.nombre}}</td>
             <td>{{p.precio}}</td>
-            <td><button type="button" (click)="eventoClickVer(p)">Ver</button></td>
+            <td>
+                <button type="button" (click)="eventoClickVer(p)">Ver</button>
+                <a [routerLink]="['/ver-producto/', p.id]" class="btn btn-danger">Ver con ruta</a>
+            </td>
         </tr>
     }
 </table>
