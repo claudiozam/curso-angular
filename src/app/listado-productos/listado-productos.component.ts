@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormProductoComponent } from '../form-producto/form-producto.component';
 import { ProductosService } from '../productos.service';
+import { catchError, retry, throwError, timeout } from 'rxjs';
 
 @Component({
   selector: 'app-listado-productos',
@@ -43,9 +44,17 @@ export class ListadoProductosComponent implements OnInit {
     this.productoActual = p;
     this.updateProducto.emit(p);
 
-    this.productosService.getProducto(p.id).subscribe(response => {
+    this.productosService.getProducto(p.id).pipe(timeout(3000)).subscribe(response => {
       console.log(response);
     });
+
+/*    this.productosService.getProducto(p.id).pipe(catchError((error) => {
+      console.log('Hay un error');
+      console.log(error);
+      return throwError(error);
+    })).subscribe(response => {
+      console.log(response);
+    });*/
 
   }
 

@@ -13,7 +13,7 @@ export class ProductosService {
   }
 
   getProductos(){
-    return this.httpClient.get<Array<any>>(this.urlBase + '/posts');
+    return this.httpClient.get<Array<any>>(this.urlBase + '/postsxxxxxxxx');
   }
 
   getProducto(id: Number){
