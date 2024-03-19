@@ -31,6 +31,7 @@ export class ListadoProductosComponent implements OnInit {
   constructor(private productosService : ProductosService) {
 
   }
+  
   ngOnInit(): void {
     this.productosService.getProductos().subscribe(response => {
       this.productos2 = response;

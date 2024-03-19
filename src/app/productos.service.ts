@@ -19,4 +19,12 @@ export class ProductosService {
   getProducto(id: Number){
     return this.httpClient.get<any>(this.urlBase + '/posts/' + id);
   }
+
+  postProducto(nombre : string, precio : number) {
+    return this.httpClient.post<any>(this.urlBase + '/posts', { 
+      "userId": 1,
+      "title": nombre,
+      "body": "precio " + precio
+     });
+  }
 }
