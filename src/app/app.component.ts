@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ListadoProductosComponent } from './listado-productos/listado-productos.component';
 import { FormProductoComponent } from './form-producto/form-producto.component';
 
@@ -14,6 +14,13 @@ export class AppComponent {
   title = 'proyecto-integrador';
 
   @ViewChild(ListadoProductosComponent) listadoProductos: any;
+
+  constructor(private router : Router) {
+  }
+
+  eventoClickCambiarRuta() {
+    this.router.navigate(['/listado-productos']);
+  }
 
   recuperarProducto(producto : any) {
     console.log('Ojo que soy el padre!!');
