@@ -11,7 +11,9 @@
 <table>
     <tr>
         <th>Id</th>
-        <th>Nombre</th>
+        <th>Nombre1</th>
+        <th>Nombre2</th>
+        <th>Fecha alta</th>
         <th>Precio</th>
         <th></th>
     </tr>
@@ -19,8 +21,10 @@
     @for(p of productos; track p.id) {
         <tr>
             <td>{{p.id}}</td>
-            <td>{{p.nombre}}</td>
-            <td>{{p.precio}}</td>
+            <td>{{p.nombre | capitalize }}</td>
+            <td>{{p.nombre | uppercase }}</td>
+            <td>{{p.fechaAlta | date:'d/M/y' }}</td>
+            <td>{{p.precio | currency:'$'}}</td>
             <td><button type="button" (click)="eventoClickVer(p)">Ver</button></td>
         </tr>
     }
