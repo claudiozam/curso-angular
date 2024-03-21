@@ -2,7 +2,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormProductoComponent } from '../form-producto/form-producto.component';
 import { ProductosService } from '../productos.service';
-import { cloneDeep, sortBy } from 'lodash';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -25,9 +24,7 @@ export class ListadoProductosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let copiaDeLosProductos = cloneDeep(this.productosService.recuperarProductos());
-    let productosOrdenados = sortBy(copiaDeLosProductos, ['nombre']);
-    this.productos = productosOrdenados;
+    this.productos = this.productosService.recuperarProductos()
   }
 
   eventoClickVer(p : any) {
@@ -38,7 +35,6 @@ export class ListadoProductosComponent implements OnInit {
 
   recibirProducto(producto : any) {
     this.productos.push(producto);
-    this.productos = sortBy(this.productos, ['nombre']);
   }
 
 }
